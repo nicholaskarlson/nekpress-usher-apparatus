@@ -1,8 +1,9 @@
 {
   "pinned_from": {
-    "repo": "nicholaskarlson/nekpress-yellow-wallpaper-ingest",
+    "repo": "nicholaskarlson/nekpress-usher-ingest",
     "tag": "v0.1.0"
   },
-  "work": "yellow_wallpaper",
-  "canonical_sha256": "a9bf7378cc740ead2875f18164b95a1c243b7a62d29b2ba91480267fd99d31c9"
+  "work": "house_of_usher",
+  "canonical_sha256": "10bcae75a3d694598d134934a87288da5cfaac2a2e117a27b20c90587a6b0802",
+  "canonical_filename": "house_of_usher.txt"
 }

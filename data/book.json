@@ -1,8 +1,8 @@
 {
-  "work_id": "yellow_wallpaper",
-  "canonical_filename": "yellow_wallpaper.txt",
+  "work_id": "house_of_usher",
+  "canonical_filename": "house_of_usher.txt",
   "canonical_heading_markers": [
-    "THE YELLOW WALLPAPER"
+    "THE FALL OF THE HOUSE OF USHER"
   ],
   "repos": {
     "ingest": "nicholaskarlson/nekpress-usher-ingest",
