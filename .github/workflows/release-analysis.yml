@@ -30,7 +30,7 @@ jobs:
 
       - name: Build analysis artifacts
         run: |
-          python tools/build_analysis.py --work yellow_wallpaper
+          python tools/build_analysis.py
           python tools/write_analysis_sha256.py
 
       - name: List artifacts

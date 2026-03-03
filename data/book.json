@@ -1,0 +1,12 @@
+{
+  "work_id": "yellow_wallpaper",
+  "canonical_filename": "yellow_wallpaper.txt",
+  "canonical_heading_markers": [
+    "THE YELLOW WALLPAPER"
+  ],
+  "repos": {
+    "ingest": "nicholaskarlson/nekpress-usher-ingest",
+    "analysis": "nicholaskarlson/nekpress-usher-apparatus",
+    "apparatus_public": null
+  }
+}
