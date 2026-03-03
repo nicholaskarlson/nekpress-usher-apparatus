@@ -2,10 +2,11 @@ from __future__ import annotations
 
 import json
 import re
-from pathlib import Path
 from statistics import mean, median
 
-WORD_RE = re.compile(r"[A-Za-z0-9']+")
+from nekpress_apparatus.book_config import load_book_config
+
+WORD_RE = re.compile(r"[A-Za-z0-9\']+")
 
 def tokenize_words(s: str) -> list[str]:
     return WORD_RE.findall(s)
@@ -15,12 +16,14 @@ def split_paragraphs(s: str) -> list[str]:
     return [p for p in paras if p]
 
 def main() -> None:
-    root = Path(__file__).resolve().parents[2]
-    text_path = root / "data" / "canonical" / "yellow_wallpaper.txt"
+    cfg = load_book_config()
+    root = cfg.root
+
+    text_path = cfg.canonical_path
     if not text_path.exists():
         raise SystemExit(
             "Missing canonical text. Run: "
-            "python tools/update_canonical.py --tag v0.1.0 --work yellow_wallpaper"
+            "python tools/update_canonical.py --tag v0.1.0"
         )
 
     text = text_path.read_text(encoding="utf-8")
@@ -29,7 +32,7 @@ def main() -> None:
     para_word_counts = [len(tokenize_words(p)) for p in paras]
 
     summary = {
-        "work": "yellow_wallpaper",
+        "work": cfg.work_id,
         "word_count": len(words),
         "paragraph_count": len(paras),
         "paragraph_word_count": {
@@ -47,6 +50,7 @@ def main() -> None:
     md = [
         "# Text-Only Analysis (Draft)",
         "",
+        f"- Work: **{summary['work']}**",
         f"- Word count: **{summary['word_count']}**",
         f"- Paragraphs: **{summary['paragraph_count']}**",
         "",

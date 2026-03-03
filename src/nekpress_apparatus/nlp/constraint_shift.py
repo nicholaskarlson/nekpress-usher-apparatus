@@ -4,7 +4,6 @@ import csv
 import math
 import re
 from collections import Counter
-from pathlib import Path
 from typing import Iterable
 
 WORD_RE = re.compile(r"[A-Za-z']+")
@@ -67,12 +66,15 @@ def log_odds(a: int, n_a: int, b: int, n_b: int) -> float:
     return math.log((a + 0.5) / (n_a - a + 0.5)) - math.log((b + 0.5) / (n_b - b + 0.5))
 
 def main() -> None:
-    root = Path(__file__).resolve().parents[3]
-    text_path = root / "data" / "canonical" / "yellow_wallpaper.txt"
+    from nekpress_apparatus.book_config import load_book_config
+
+    cfg = load_book_config()
+    root = cfg.root
+    text_path = cfg.canonical_path
     if not text_path.exists():
         raise SystemExit(
             "Missing canonical text. Run: "
-            "python tools/update_canonical.py --tag v0.1.0 --work yellow_wallpaper"
+            "python tools/update_canonical.py --tag v0.1.0"
         )
 
     text = text_path.read_text(encoding="utf-8")
